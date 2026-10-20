@@ -2,9 +2,9 @@
 const { getAllBooks, getBookById } = require('./query');
 
 
+
 async function main() {
   try {
-
     console.log('--- Connection test ---');
     const conn = await pool.getConnection();
     console.log('Connected to MySQL ✓');
