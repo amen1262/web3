@@ -1,11 +1,14 @@
-﻿const pool = require('./db');
+const pool = require('./db');
 
-async function getBooks() {
-    const [rows] = await pool.query(
-        'SELECT * FROM books'
-    );
 
-    return rows;
+async function getAllBooks() {
+  const [rows] = await pool.query('SELECT id, title, available FROM books');
+  return rows;
 }
 
-module.exports = { testConnection, getBooks };
+async function getBookById(id) {
+  const [rows] = await pool.query('SELECT id, title, available FROM books where id = ?' , [id]);
+  return rows[0];
+}
+
+module.exports = { getAllBooks , getBookById}
